@@ -14,22 +14,19 @@ Pleae note that this repository includes the following files:
      ── process_data.py---------------# TO PERFORMS ETL PROCESS
  ── models
      ── train_classifier.py-----------# TO CREATE THE MODEL FOR CLASSIFICATION 
+•	── app
+•	── run.py------------------------# FLASK FILE THAT RUNS APP
+•	── templates
+•	── go.html-------------------# CLASSIFICATION RESULT PAGE OF WEB APP
+•	── master.html---------------# MAIN PAGE OF WEB APP
+•	── data
+•	── DisasterResponse.db-----------# DATABASE TO SAVE CLEANED DATA TO
+•	── disaster_categories.csv-------# DATA TO PROCESS
+•	── disaster_messages.csv---------# DATA TO PROCESS
+•	── process_data.py---------------# TO PERFORMS ETL PROCESS
+•	── models
+•	── train_classifier.py-----------# TO CREATE THE MODEL FOR CLASSIFICATION
 
-├── app
-│   ├── run.py------------------------# FLASK FILE THAT RUNS APP
-│   ├── static
-│   │   └── favicon.ico---------------# FAVICON FOR THE WEB APP
-│   └── templates
-│       ├── go.html-------------------# CLASSIFICATION RESULT PAGE OF WEB APP
-│       └── master.html---------------# MAIN PAGE OF WEB APP
-├── data
-│   ├── DisasterResponse.db-----------# DATABASE TO SAVE CLEANED DATA TO
-│   ├── disaster_categories.csv-------# DATA TO PROCESS
-│   ├── disaster_messages.csv---------# DATA TO PROCESS
-│   └── process_data.py---------------# PERFORMS ETL PROCESS
-├── img-------------------------------# PLOTS FOR USE IN README AND THE WEB APP
-├── models
-│   └── train_classifier.py-----------# PERFORMS CLASSIFICATION TASK
 
 
 ### Instructions:

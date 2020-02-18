@@ -1,5 +1,5 @@
 # Disaster-response-pipeline
-this project is part of udacity nanodegree
+This project is part of udacity nanodegree
 Pleae note that this repository includes the following files:
 
 - app

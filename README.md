@@ -14,8 +14,8 @@ Pleae note that this repository includes the following files:
      ── process_data.py---------------# TO PERFORMS ETL PROCESS
  ── models
      ── train_classifier.py-----------# TO CREATE THE MODEL FOR CLASSIFICATION 
-•	app
-•	run.py------------------------# FLASK FILE THAT RUNS APP
+- app
+- run.py------------------------# FLASK FILE THAT RUNS APP
 •	── templates
 •	── go.html-------------------# CLASSIFICATION RESULT PAGE OF WEB APP
 •	── master.html---------------# MAIN PAGE OF WEB APP

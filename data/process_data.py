@@ -3,6 +3,16 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_file_path, categories_file_path):
+    """
+    this function is used to load the data from CSV files     
+    
+    Input:
+    messages_file_path:   CSV file path for messages
+    categories_file_path: CSV file path for categories
+    Output:
+    df: which contains merged  datasets  
+    
+    """
     messages  = pd.read_csv(messages_file_path)
     categories = pd.read_csv(categories_file_path)
     
@@ -13,8 +23,15 @@ def load_data(messages_file_path, categories_file_path):
 
 
 def clean_data(df):
+    """
+    this function is used to clean the dataset and split the categories column  into 36 features    
+    Input:
+    df: merged datasets  
+    Output:
+    df: merged datasets with new 36 categories columns
+    
+    """
     categories = df.categories.str.split(";",expand = True)
-
     row = categories.iloc[0].values
     clean_row = []
     for coloumn in row:
@@ -44,6 +61,15 @@ def clean_data(df):
 
 
 def save_data(df, database_file_name):
+    """
+    this function is used to save the dataset into sqlite database
+    Input:
+    df: merged datasets  
+    database_file_name: path to save the databse including the table name EX:  DisasterResponse.db
+
+    Output:
+    NONE     
+    """
     engine = create_engine('sqlite:///{}'.format(database_file_name)) 
     db_file_name = database_file_name.split("/")[-1] 
     table_name = db_file_name.split(".")[0]

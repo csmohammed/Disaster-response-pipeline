@@ -37,6 +37,6 @@ Pleae note that this repository includes the following files:
 ### Please find the below snapshot of the execution
 
 1. Runing "process_data.py" file 
-![](Disaster-response-pipeline/images/process_data.jpg)
+![](images/process_data.jpg)
 
 

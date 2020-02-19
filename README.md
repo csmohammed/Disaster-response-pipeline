@@ -45,19 +45,19 @@ Pleae note that this repository includes the following files:
 3. Running "run.py" file 
 ![](images/run-1.jpg)
 
-3.1 Search for text in the web  
+3.1. Search for text in the web  
 ![](images/web.jpg)
 
-3.2 Displaying messages genres 
+3.2. Displaying messages genres 
 ![](images/web1.jpg)
 
-3.3 Proportion of messages by category  
+3.3. Proportion of messages by category  
 ![](images/web2.jpg)
 
-3.4 Top 10 words occurred 
+3.4. Top 10 words occurred 
 ![](images/web%203.jpg)
 
-3.5 Less 10 words occurred 
+3.5. Less 10 words occurred 
 ![](images/web%204.jpg)
 
 

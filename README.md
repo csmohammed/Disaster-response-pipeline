@@ -55,7 +55,7 @@ Pleae note that this repository includes the following files:
 ![](images/web2.jpg)
 
 3.4 Top 10 words occurred 
-![](imagesweb%203.jpg)
+![](images/web%203.jpg)
 
 3.5 Less 10 words occurred 
 ![](images/web%204.jpg)

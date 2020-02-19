@@ -49,10 +49,10 @@ Pleae note that this repository includes the following files:
 ![](images/web.jpg)
 
 3.2 Displaying messages genres 
-![](images/web%201.jpg)
+![](images/web1.jpg)
 
 3.3 Proportion of messages by category  
-![](images/web%202.jpg)
+![](images/web2.jpg)
 
 3.4 Top 10 words occurred 
 ![](imagesweb%203.jpg)

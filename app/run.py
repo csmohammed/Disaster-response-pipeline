@@ -1,11 +1,13 @@
+import nltk
+nltk.download(['punkt', 'wordnet','averaged_perceptron_tagger', 'stopwords'])
 import json
 import plotly
 import pandas as pd
 from collections import Counter
-
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import operator
+import re
 
 from flask import Flask
 from flask import render_template, request, jsonify
@@ -14,7 +16,26 @@ from sklearn.externals import joblib
 from sqlalchemy import create_engine
 from pprint import pprint
 from nltk.corpus import stopwords
-
+from sklearn.pipeline import Pipeline , FeatureUnion
+import re
+import pickle
+import numpy as np
+import sys
+import pandas as pd
+from sklearn.multioutput import MultiOutputClassifier
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.svm import LinearSVC
+from sqlalchemy import create_engine
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.base import BaseEstimator, TransformerMixin
+from collections import Counter
+import operator
 
 app = Flask(__name__)
 
@@ -81,6 +102,7 @@ def index():
     ####                                                    
     counter_ =0
     top_10_count = {}
+    tail_10_count = {}
 
     for key_dic,value_dic in sorted_word_count.items():
         top_10_count[key_dic]=value_dic
@@ -90,6 +112,15 @@ def index():
     words=list(top_10_count.keys())
     pprint(words)
     count_proportion=100*np.array(list(top_10_count.values()))/df.shape[0]
+    counter_ =0
+    for key_dic,value_dic in sorted_word_count.items():
+        counter_+=1
+        if counter_ > len(sorted_word_count) -10:
+            tail_10_count[key_dic]=value_dic
+    words_tail=list(tail_10_count.keys())
+    pprint(words_tail)
+    count_proportion_tail=100*np.array(list(tail_10_count.values()))/df.shape[0]
+    
     # create visuals
     graphs = [
         {
@@ -147,6 +178,26 @@ def index():
                 },
                 'xaxis': {
                     'title': 'Top 10 words',
+                    'automargin': True
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=words_tail,
+                    y=count_proportion_tail
+                )
+            ],
+
+            'layout': {
+                'title': 'Frequency of tail 10 words  as percentage',
+                'yaxis': {
+                    'title': 'Occurrence<br>(Out of 100)',
+                    'automargin': True
+                },
+                'xaxis': {
+                    'title': 'Tail 10 words',
                     'automargin': True
                 }
             }

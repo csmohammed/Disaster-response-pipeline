@@ -17,7 +17,6 @@ Pleae note that this repository includes the following files:
   - classifier.zip ---------------# THIS IS THE "PKL" FILE AND ZIPPED DUE TO SIZE ISSUE   
 
 
-
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
@@ -30,4 +29,14 @@ Pleae note that this repository includes the following files:
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+
+
+
+
+### Please find the below snapshot of the execution
+
+1. Runing "process_data.py" file 
+![](Disaster-response-pipeline/images/process_data.jpg)
+
 

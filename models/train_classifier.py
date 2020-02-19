@@ -26,6 +26,19 @@ from nltk.corpus import stopwords
 
 
 def load_data(database_filepath):
+    """
+    this function is used to load the data from the database    
+    
+    Input:
+    database file path 
+    
+    Output:
+    x: which contains messages column  
+    Y: which contains all values of 36 features
+    category_names: which contains name of 36 features 
+    
+    """
+
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql_table('DisasterResponse', engine)
     X = df.message
@@ -37,6 +50,17 @@ def load_data(database_filepath):
     return X, Y, category_names 
 
 def tokenize(text):
+    """
+    this function is used to clean data     
+    
+    Input:
+    text messages 
+    
+    Output:
+    text: which contains list and clean text 
+    
+    """
+    
     # Normalize text
     text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
     
@@ -53,12 +77,41 @@ def tokenize(text):
     return words
 
 def build_model():
+    """
+    this function is used to build pipeline model      
+    
+    Input:
+    NONE 
+    
+    Output:
+    model: after apply  grid search
+    
+    """
     pipeline = Pipeline([('vect', CountVectorizer(tokenizer=tokenize)),
                          ('tfidf', TfidfTransformer()),
                          ('clf', RandomForestClassifier())])
-    return pipeline
+    parameters = {'vect__ngram_range': ((1, 1), (1, 2)),
+                  'vect__max_df': (0.75, 1.0)
+                  }
+
+    # create model
+    model = GridSearchCV(estimator=pipeline,
+            param_grid=parameters)
+    return model
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    this function is used toevaluate the model on the testing      
+    
+    Input:
+      model:          the trained model 
+      X_test:         the text to be tested 
+      Y_test:         actual features to compare against 
+      category_names: features
+    Output:
+    NONE
+    
+    """
     y_pred = model.predict(X_test)
 
     # print classification & accuracy score
@@ -67,6 +120,16 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_file_path):
+    """
+    this function is used toevaluate the model on the testing      
+    
+    Input:
+      model:           the trained model 
+      model_file_path: the path to save the PKL trained model
+    Output:
+    NONE
+    
+    """
     pickle.dump(model, open(model_file_path, 'wb'))
 
 
